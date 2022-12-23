@@ -1,0 +1,117 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Grand+Hotel&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@200&family=Righteous&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@200&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@200&family=Righteous&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Lobster+Two&display=swap');
+a{
+  color:black !important
+}
+.brand-logo,h2 {
+  /* font-family: 'Grand Hotel', cursive; */
+  /* font-family: 'Kanit', sans-serif;
+
+  font-family: 'Righteous', cursive; */
+  font-family: 'Lobster Two', cursive;
+}
+.auth-card {
+  padding:20px;
+  text-align: center;
+  max-width: 400px;
+  margin:50px auto;
+}
+.input-field input[type=text]:focus {
+  border-bottom: 1px solid rgb(1, 124, 247) !important;
+  box-shadow: 0 1px 0 0 rgb(1, 124, 247) !important;
+}
+.gallery{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.item{
+  width: 30%;
+}
+.home-card{
+  max-width: 500px;
+  height: max-content;
+  margin: 26px auto;
+  background-color: aqua;
+  border-radius: 8px;
+}
+
+#toast-container{
+  top:30px !important;
+  right: 20px !important;
+  left: auto !important;
+}
+#toBold{
+  font-weight: 590;
+}
+.custom {
+  color:white !important;
+}
+.brand-logo {
+  color:white !important;
+}
+.home-card:hover {
+  transform: scale(1.05);
+}
+
+
+.login-block input#username {
+  background: #fff url('http://i.imgur.com/u0XmBmv.png') 20px top no-repeat;
+  background-size: 16px 80px;
+  padding-left: 40px;
+  width: calc(100% - 40px);
+}
+
+
+.login-block input#password {
+  background: #fff url('http://i.imgur.com/Qf83FTt.png') 20px top no-repeat;
+  background-size: 16px 80px;
+  padding-left: 40px;
+  width: calc(100% - 40px);
+}
+
+
+.spanv {
+  position: relative;
+  bottom: 35px;
+  left:150px;
+  cursor: pointer;
+}
+
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  min-height: 100vh;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.46);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 20;
+}
+
+.modal_content {
+  overflow-y: auto;
+  /* max-height: 95vh; */
+  height: 70%;
+  width: 70%;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.12);
+}
+
+.collection-item {
+  width: 100%;
+}
+
+.pagination {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
