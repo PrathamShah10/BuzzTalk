@@ -10,6 +10,7 @@ import CreatePost from './components/screens/CreatePost';
 import FollowingUser from './components/screens/FollowingUser'
 import Reset from './components/screens/Reset'
 import NewPassword from './components/screens/NewPassword';
+import Chat from './components/screens/Chat/Chat'
 import { BrowserRouter, Navigate, Route, Routes, useNavigate, useLocation } from "react-router-dom"
 import { reducer, initialState } from './reducers/UserReducer'
 export const UserContext = createContext();
@@ -19,7 +20,6 @@ const Routing = () => {
   const { state, dispatch } = useContext(UserContext);
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
-    // console.log(user)
     if (user) {
       dispatch({ type: "USER", payload: user })
     }
@@ -40,12 +40,13 @@ const Routing = () => {
       <Route path="/profile/:userid" element={<UserProfile />} />
       <Route exact path="/reset" element={<Reset />} />
       <Route path="/reset/:token" element={<NewPassword />} />
+      <Route path="/chat" element={<Chat />} />
     </Routes>
   )
 }
 
 function App() {
-  const [state, dispatch] = useReducer(reducer, initialState)
+  const [state, dispatch] = useReducer(reducer, initialState);
   return (
     <UserContext.Provider value={{ state, dispatch }}>
       <BrowserRouter>

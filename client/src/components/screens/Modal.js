@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom'
 import React, { useState } from 'react'
+import M from 'materialize-css';
 
 const Modal = (props) => {
     const [value, setValue] = useState("");
@@ -21,6 +22,33 @@ const Modal = (props) => {
                 setRenderList(result);
             })
     }, [value])
+
+    const setCommunication = (sid) => {
+        const obj = {
+            senderId: props.currUser,
+            recieverId: sid
+        }
+
+        fetch('/conversation', {
+            method: 'post',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': "Bearer " + localStorage.getItem("jwt")
+            },
+            body: JSON.stringify({
+                senderId: props.currUser,
+                recieverId: sid
+            })
+        })
+            .then(res => res.json())
+            .then((result) => {
+                if (result) {
+                    M.toast({ html: result.message, classes: "#43a047 green darken-1" });
+                    props.onClose();
+                }
+            })
+    }
+
     return (
         <div className="modal" onClick={() => {
             if (props.onClose) props.onClose()
@@ -35,15 +63,37 @@ const Modal = (props) => {
                 }} />
                 <ul className="collection">
                     {
-                        renderingList?.length !== 0
+                        props.communication === true
                             ?
-                            renderingList.map((item) => {
-                                return (
-                                    <Link to={"/profile/" + item._id} onClick={() => props.onClose()} key={item._id}> <li className='collection-item'> {item.name} </li> </Link>
-                                )
-                            })
+                            renderingList?.length !== 0
+                                ?
+                                renderingList.map((item) => {
+                                    return (
+                                        <li style={{cursor:'pointer'}}className='collection-item' onClick={() => setCommunication(item._id)}>
+                                            {item.name}
+                                        </li>
+                                    )
+                                })
+                                :
+                                <li style={{ padding: '10px' }}>No user exsist!</li>
+
+
                             :
-                            <li style={{ padding: '10px' }}>No user exsist!</li>
+
+
+                            renderingList?.length !== 0
+                                ?
+                                renderingList.map((item) => {
+                                    return (
+                                        <Link to={"/profile/" + item._id} onClick={() => props.onClose()} key={item._id}>
+                                            <li className='collection-item'>
+                                                {item.name}
+                                            </li>
+                                        </Link>
+                                    )
+                                })
+                                :
+                                <li style={{ padding: '10px' }}>No user exsist!</li>
                     }
                 </ul>
             </div>

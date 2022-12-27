@@ -68,7 +68,7 @@ const UserProfile = () => {
                 dispatch({ type: "UPDATE", payload: { following: result.following, followers: result.followers } })
                 localStorage.setItem("user", JSON.stringify(result))
                 setUserProfile((prevstate) => {
-                    const newfollowers=prevstate.user.followers.filter(item=>item!=result._id)
+                    const newfollowers=prevstate.user.followers.filter(item=>item!==result._id)
                     return {
                         ...prevstate,
                         user: {

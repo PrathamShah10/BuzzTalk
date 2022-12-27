@@ -34,7 +34,6 @@ router.get('/search/:enterName', (req, res) => {
         .then(user => {
             console.log(user)
             if(user.length === 0) {
-            //     console.log(req.params.enterName)
                 return res.status(422).json(user);
             }
             return res.status(200).json(user);

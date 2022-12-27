@@ -14,9 +14,7 @@ router.get('/allpost', requireLogin, (req, res) => {
         .populate("comments.postedBy","name")
         .sort('-createdAt')
         .then(posts => {
-            // console.log(posts)
             res.json(posts);
-            // console.log(posts)
         })
         .catch(err => {
             console.log(err);
