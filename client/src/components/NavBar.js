@@ -13,8 +13,9 @@ const NavBar = () => {
         <li key="1"><i className="material-icons" style={{cursor:'pointer'}} onClick={()=>setShowModal(true)}>search</i></li>,
         <li key="2"><Link to="/profile" className="custom">Profile</Link></li>,
         <li key="3"><Link to="/createpost" className="custom">Create Post</Link></li>,
-        <li key="4"><Link to="/followingposts" className="custom">Followings Posts</Link></li>,
-        <li key="5">
+        <li key="4"><Link to="/followingposts" className="custom">Following Post</Link></li>,
+        <li key="5"><Link to="/chat" className="custom">Chat</Link></li>,
+        <li key="6">
           <button className="btn waves-effect waves-light #64b5f6 red lighten-2"
             onClick={() => {
               localStorage.clear();
@@ -30,8 +31,8 @@ const NavBar = () => {
     }
     else {
       return [
-        <li key="6" ><Link to="/signin" className="custom">Signin</Link></li>,
-        <li key="7" ><Link to="/signup" className="custom">Signup</Link></li>
+        <li key="7" ><Link to="/signin" className="custom">Signin</Link></li>,
+        <li key="8" ><Link to="/signup" className="custom">Signup</Link></li>
       ]
     }
   }
