@@ -33,7 +33,6 @@ function decrypt(text) {
 
 //create message
 router.post('/message', requireLogin, (req, res) => {
-    // console.log("want", req.body)
     var encyptedFormat = encrypt(req.body.text)
     const message = new Message({
         ...req.body,
@@ -53,7 +52,6 @@ router.post('/message', requireLogin, (req, res) => {
 //find messages of a conversation
 
 router.get('/getmessage/:conversationId', (req, res) => {
-    // console.log('trigger')
     Message.find({ conversationId: req.params.conversationId })
         .then((messages) => {
             if (!messages) {
@@ -61,14 +59,11 @@ router.get('/getmessage/:conversationId', (req, res) => {
             }
             var decryptedMessage = []
             messages.map((msg) => {
-                    // console.log("text",msg.text)
                     var newtext = decrypt(msg.text);
-                    // console.log("decypted:", newtext);
                     var newMsg = {
                         ...msg,
                         text: newtext
                     }
-                    // console.log("navu msg che: ",newMsg)
                     decryptedMessage.push(newMsg)
             })
             res.status(200).json(decryptedMessage);
