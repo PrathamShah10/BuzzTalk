@@ -58,11 +58,8 @@ router.get('/getmessage/:conversationId', (req, res) => {
             var decryptedMessage = []
             messages.map((msg) => {
                     var newtext = decrypt(msg.text);
-                    var newMsg = {
-                        ...msg,
-                        text: newtext
-                    }
-                    decryptedMessage.push(newMsg)
+                    msg['text'] = newtext
+                    decryptedMessage.push(msg)
             })
             res.status(200).json(decryptedMessage);
         })

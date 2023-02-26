@@ -16,11 +16,12 @@ const Chat = () => {
     const socket = useRef();
     const { state, dispatch } = useContext(UserContext);
     const scrollRef = useRef();
-
+    const ENDPOINT = "ws://localhost:8900";
 
 
     useEffect(() => {
-        socket.current = io("ws://localhost:8900");
+        // socket.current = io("https://social-media-socket-production.up.railway.app");
+        socket.current = io(ENDPOINT, { transports: ['websocket'] });
         socket.current.on("getMessage", (data) => {
             setArrivalMessage({
                 sender: data.senderId,
@@ -38,7 +39,7 @@ const Chat = () => {
 
     useEffect(() => {
         state && socket.current.emit("addUser", state?._id);
-    }, [state != null]);
+    }, [state]);
 
     useEffect(() => {
         const getConversations = () => {
@@ -145,8 +146,8 @@ const Chat = () => {
                                     <>
                                         <div className="chatBoxTop">
                                             {messages.map((m) => (
-                                                <div ref={scrollRef}>
-                                                    <Message message={m} own={m.sender === state?._id} />
+                                                 <div ref={scrollRef}>
+                                                    <Message message={m} senderId={m?.sender} stateId={state?._id}/>
                                                 </div>
                                             ))}
                                         </div>
