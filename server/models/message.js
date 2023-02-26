@@ -9,6 +9,8 @@ const messageSchema = new mongoose.Schema({
     },
     text: {
         type:String,
+        // iv: String,
+        // encryptedData: String
     }
 },{
     timestamps:true
