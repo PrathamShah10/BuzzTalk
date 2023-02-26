@@ -7,7 +7,6 @@ const router = express.Router();
 const requireLogin = require('../middleware/requireLogin');
 
 
-const algorithm = 'aes-256-cbc';
 const key = crypto.randomBytes(32);
 const iv = crypto.randomBytes(16);
 function encrypt(text) {
@@ -29,7 +28,6 @@ function decrypt(text) {
     return decrypted.toString();
     //returns decryptedData
 }
-// var hw = encrypt("Some serious stuff")
 
 //create message
 router.post('/message', requireLogin, (req, res) => {
